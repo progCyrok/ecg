@@ -30,6 +30,11 @@
     "settings.editor.selected.configurable": "project.propVCSSupport.CommitDialog"
   }
 }]]></component>
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\gosha\ecg" />
+    </key>
+  </component>
   <component name="RunManager" selected="Python.firsr">
     <configuration name="firsr" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
       <module name="ecg" />
