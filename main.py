@@ -125,7 +125,8 @@ def analisECG(k=0):
 
 start = time.time()
 train_gts = pd.read_csv("task_1/train/train_gts.csv")
-dict = {'record_name': [], 'Q1': [], 'R1': [], 'S1': [], 'ST_average_value1': [], 'ST-change1': [], 'T1': [],
+dict = {'record_name': [],
+        'Q1': [], 'R1': [], 'S1': [], 'ST_average_value1': [], 'ST-change1': [], 'T1': [],
         'Q2': [], 'R2': [], 'S2': [], 'ST_average_value2': [], 'ST-change2': [], 'T2': [],
         'Q3': [], 'R3': [], 'S3': [], 'ST_average_value3': [], 'ST-change3': [], 'T3': [],
         'Q4': [], 'R4': [], 'S4': [], 'ST_average_value4': [], 'ST-change4': [], 'T4': [],
