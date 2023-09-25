@@ -1,8 +1,7 @@
 import pandas as pd
 import numpy as np
-import matplotlib.pyplot as plt
-import neurokit2 as nk
 import time
+import neurokit2 as nk
 
 
 def f2():
@@ -104,7 +103,7 @@ def anST(d1, d2, signals):
     return s / c, q / c
 
 
-def analisECG(k=0):
+def analisECG(k,data):
     result = [0, 0, 0, 0, 0, 0]  # Q, R, S, ST-average value, ST-change, T
     signals = nk.ecg_clean(data[k], sampling_rate=500)
 
@@ -124,7 +123,9 @@ def analisECG(k=0):
 
 
 start = time.time()
-train_gts = pd.read_csv("task_1/train/train_gts.csv")
+# train_gts = pd.read_csv("task_1/train/train_gts.csv")
+train_gts = pd.read_csv(r"C:\Users\gosha\ecg\task_1\test\test_gts.csv")
+
 dict = {'record_name': [],
         'Q1': [], 'R1': [], 'S1': [], 'ST_average_value1': [], 'ST-change1': [], 'T1': [],
         'Q2': [], 'R2': [], 'S2': [], 'ST_average_value2': [], 'ST-change2': [], 'T2': [],
@@ -147,17 +148,18 @@ for i in range(len(train_gts['record_name'])):
     if i == 30:
         continue
     name = train_gts['record_name'][i]
-    with open("task_1/train/" + name + ".npy", "rb") as f:
+    with open(fr"C:\Users\gosha\ecg\task_1\test\{name}.npy", "rb") as f:
         data = np.load(f, allow_pickle=True)
     newdata = [name]
     for k in range(12):
         try:
-            sup = analisECG(k)
-        except:
+            sup = analisECG(k,data)
+        except Exception as e:
+            print(e)
             sup = [0] * 6
         newdata.extend(sup)
     df.loc[len(df.index)] = newdata
 print(df)
-df.to_csv('file1.csv')
+df.to_csv('test_data.csv')
 end = time.time()
 print("The time of execution of above program is :", (end - start) * 10 ** 3, "ms")

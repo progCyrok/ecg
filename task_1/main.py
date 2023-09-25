@@ -4,8 +4,8 @@ import matplotlib.pyplot as plt
 
 
 def f2():
-    data1 = pd.read_csv("train/train_meta.csv")
-    data2 = pd.read_csv("train/train_gts.csv")
+    data1 = pd.read_csv(r"C:\Users\gosha\ecg\task_1\test\test_meta.csv")
+    data2 = pd.read_csv(r"C:\Users\gosha\ecg\task_1\test\test_gts.csv")
     name = list(data1['record_name'])
     meta = [-1] * len(name)
     for i in range(len(name)):
@@ -15,8 +15,8 @@ def f2():
 
 
 def pandas_add():
-    data1 = pd.read_csv("train/train_meta.csv")
-    data2 = pd.read_csv("train/train_gts.csv")
+    data1 = pd.read_csv(r"C:\Users\gosha\ecg\task_1\test\test_meta.csv")
+    data2 = pd.read_csv(r"C:\Users\gosha\ecg\task_1\test\test_gts.csv")
     name = list(data1['record_name'])
     meta = [-1] * len(name)
     for i in range(len(name)):
@@ -43,7 +43,7 @@ def pandas_add():
     dataframe_pandas = pd.DataFrame(dt)
     import funktions
     funk = funktions.Funk()
-    stroka = pd.read_csv(r"C:\Users\gosha\ecg\file1.csv", delimiter= ',')
+    stroka = pd.read_csv(r"C:\Users\gosha\ecg\test_data.csv", delimiter= ',')
     for i in range(len(data1['record_name'])):
         arr = []
         arr.append(data1['record_name'][i])
@@ -67,6 +67,6 @@ def pandas_add():
         except Exception as e:
             print(e)
 
-    dataframe_pandas.to_csv('file_without_anilise_of_graphics.csv')
+    dataframe_pandas.to_csv('test_data.csv')
 
 pandas_add()

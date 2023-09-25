@@ -12,17 +12,24 @@ x = np.array(data[data.columns.tolist()[2:-1]])
 y = np.array(data['miocard'])
 #
 # # Define the model
-model = Sequential()
-# Add a single dense layer with one neuron
-model.add(Dense(1, input_dim=80, activation='sigmoid'))
+from tensorflow import keras
+from tensorflow.keras import layers
 
-# Compile the model
+# Создание модели перцептрона
+model = keras.Sequential()
+
+# Добавление слоев в модель
+model.add(layers.Dense(32, input_dim=80, activation='relu'))  # Скрытый слой с 32 нейронами и функцией активации ReLU
+model.add(layers.Dense(1, activation='sigmoid'))  # Выходной слой с 1 нейроном и функцией активации Sigmoid
+
+# Компиляция модели
 model.compile(loss='binary_crossentropy', optimizer='adam', metrics=['accuracy'])
 
-# Train the model
-model.fit(x, y, epochs=1000, batch_size=4, verbose=0)
+# Обучение модели
+model.fit(x, y, epochs=1000, batch_size=32)
 
-# Evaluate the model
-loss, accuracy = model.evaluate(X, y)
-print(f"Loss: {loss}, Accuracy: {accuracy}")
-model.save("first_model_save")
+# Оценка модели
+loss, accuracy = model.evaluate(x, y)
+print(f'Loss: {loss}')
+print(f'Accuracy: {accuracy}')
+model.save("my_model.keras")
